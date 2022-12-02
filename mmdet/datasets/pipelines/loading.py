@@ -273,9 +273,11 @@ class LoadAnnotations(object):
             numpy.ndarray: The decode bitmap mask of shape (img_h, img_w).
         """
 
-        if isinstance(mask_ann, list):
+        #if isinstance(mask_ann, list):
+        if type(mask_ann) ==list and len(mask_ann) > 0:
             # polygon -- a single object might consist of multiple parts
             # we merge all parts into one mask rle code
+            ## print("mask_ann : ", mask_ann)
             rles = maskUtils.frPyObjects(mask_ann, img_h, img_w)
             rle = maskUtils.merge(rles)
         elif isinstance(mask_ann['counts'], list):

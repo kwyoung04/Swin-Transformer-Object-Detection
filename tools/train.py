@@ -22,8 +22,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
     parser.add_argument('config', help='train config file path')
     parser.add_argument('--work-dir', help='the dir to save logs and models')
-    parser.add_argument(
-        '--resume-from', help='the checkpoint file to resume from')
+    #parser.add_argument('--resume-from', help='the checkpoint file to resume from')
+    parser.add_argument('--resume-from', default='/home/ubuntu/harry/Swin-Transformer-Object-Detection/work_dirs/nia_zeron/epoch_1.pth', help='the checkpoint file to resume from')
+  
     parser.add_argument(
         '--no-validate',
         action='store_true',
