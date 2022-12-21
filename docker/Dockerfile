@@ -28,3 +28,23 @@ WORKDIR /mmdetection
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
+
+
+################ user setting ################
+ARG  HOST_USER=ubuntu
+ARG  UNAME=${HOST_USER}
+ARG  HOME=/home/${UNAME}
+ARG  MAINPC_IP=localhost
+ARG  UID=1000
+ARG  GID=1000
+
+RUN  groupadd --system --gid ${GID} ${UNAME} \
+ &&  useradd -rm -d ${HOME} -s /bin/bash -g root -G sudo,audio,video,plugdev -u ${UID} ${UNAME} \
+ &&  usermod -aG dialout ${UNAME} \
+ &&  usermod -aG sudo ${UNAME} \
+ &&  mkdir -p /etc/sudoers.d \
+ &&  echo "${UNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${UNAME} \
+ &&  chmod 0440 /etc/sudoers.d/${UNAME} 
+
+USER  ${UNAME}
+WORKDIR  $HOME
