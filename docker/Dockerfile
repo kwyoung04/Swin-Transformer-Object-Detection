@@ -18,8 +18,8 @@ RUN pip install --upgrade pip
 
 # Install MMCV
 #RUN pip install mmcv-full==latest+torch1.6.0+cu101 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
-RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
-RUN pip install mmdet
+RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
+RUN pip install mmdet==2.23.0
 
 
 # Install MMDetection
@@ -31,6 +31,10 @@ RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
 
 ################ user setting ################
+RUN apt update
+RUN apt install -y sudo
+
+
 ARG  HOST_USER=ubuntu
 ARG  UNAME=${HOST_USER}
 ARG  HOME=/home/${UNAME}
