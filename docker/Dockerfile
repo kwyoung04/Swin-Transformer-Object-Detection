@@ -1,6 +1,7 @@
-ARG PYTORCH="1.6.0"
-ARG CUDA="10.1"
-ARG CUDNN="7"
+ARG PYTORCH="1.7.1"
+ARG CUDA="11.0"
+ARG CUDNN="8"
+
 
 FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
 
@@ -17,8 +18,8 @@ RUN pip install --upgrade pip
 
 # Install MMCV
 #RUN pip install mmcv-full==latest+torch1.6.0+cu101 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
-RUN pip install mmcv-full==1.6.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
-RUN pip install mmdet==2.26.0
+RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
+RUN pip install mmdet
 
 
 # Install MMDetection
@@ -28,7 +29,6 @@ WORKDIR /mmdetection
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
-
 
 ################ user setting ################
 ARG  HOST_USER=ubuntu

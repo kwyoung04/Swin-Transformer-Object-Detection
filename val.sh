@@ -1,0 +1,1 @@
+python tools/test.py configs/swin/nia_zeron.py work_dirs/nia_zeron/latest.pth --eval bbox segm
