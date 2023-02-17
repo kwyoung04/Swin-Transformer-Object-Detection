@@ -15,6 +15,16 @@ from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.models import build_detector
 
+import datetime as pydatetime
+
+del_call = ['background_in', 'pillar', 'sky', 'tree', 'background_out']
+
+def get_now():
+    return pydatetime.datetime.now()
+
+def get_now_timestamp():
+    return get_now().timestamp()
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -180,6 +190,11 @@ def main():
     # old versions did not save class info in checkpoints, this walkaround is
     # for backward compatibility
     if 'CLASSES' in checkpoint.get('meta', {}):
+        print(checkpoint['meta']['CLASSES'])
+        #vList = list(checkpoint['meta']['CLASSES'])
+        #for del_cl in del_call:
+        #    vList.remove(del_cl)
+        #checkpoint['meta']['CLASSES']=tuple(vList)
         model.CLASSES = checkpoint['meta']['CLASSES']
     else:
         model.CLASSES = dataset.CLASSES
@@ -217,4 +232,18 @@ def main():
 
 
 if __name__ == '__main__':
+    startTime = get_now_timestamp()
+    f = open("log/keypoint_4-2_0_1_3.txt", 'w')
+    
+    f_data = "start time: " + str(startTime) + "\n"
+    f.write(f_data)
+    f.write("run command: python tools/test.py configs/swin/nia_zeron.py work_dirs/nia_zeron/epoch_10.pth --eval segm\n")
+    
+    f.close()
+    
+    
     main()
+    
+    
+    
+

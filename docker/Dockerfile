@@ -15,10 +15,11 @@ RUN apt-get install -y ffmpeg libsm6 libxext6 git ninja-build libglib2.0-0 libsm
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN pip install --upgrade pip
+RUN pip install --upgrade pip
 
 # Install MMCV
 #RUN pip install mmcv-full==latest+torch1.6.0+cu101 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
-RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
+#RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
 RUN pip install mmdet==2.23.0
 
 
@@ -33,7 +34,6 @@ RUN pip install --no-cache-dir -e .
 ################ user setting ################
 RUN apt update
 RUN apt install -y sudo
-
 
 ARG  HOST_USER=ubuntu
 ARG  UNAME=${HOST_USER}

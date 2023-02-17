@@ -1,6 +1,6 @@
 docker run  -it \
             --gpus all \
-            --rm \
+            -d \
             -v /home/ubuntu/eric/Swin-Transformer-Object-Detection:$HOME/src/swint \
             -v /data/nia/4-2_221221/:$HOME/data \
             --env="DISPLAY" \

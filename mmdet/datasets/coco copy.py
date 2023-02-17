@@ -239,7 +239,13 @@ class CocoDataset(CustomDataset):
         for idx in range(len(self)):
             img_id = self.img_ids[idx]
             det, seg = results[idx]
-            for label in range(len(det)):
+            det_len = len(det) - 6
+            label = 0
+            while label < det_len:
+            #for label in range(len(det)):
+                if label in [134, 136, 154, 155, 158]:
+                    label = label + 1
+                    continue
                 # bbox results
                 bboxes = det[label]
                 for i in range(bboxes.shape[0]):
@@ -259,8 +265,6 @@ class CocoDataset(CustomDataset):
                     segms = seg[label]
                     mask_score = [bbox[4] for bbox in bboxes]
                 for i in range(bboxes.shape[0]):
-                    if i >= len(segms):
-                        continue
                     data = dict()
                     data['image_id'] = img_id
                     data['bbox'] = self.xyxy2xywh(bboxes[i])
@@ -270,6 +274,7 @@ class CocoDataset(CustomDataset):
                         segms[i]['counts'] = segms[i]['counts'].decode()
                     data['segmentation'] = segms[i]
                     segm_json_results.append(data)
+                label = label+1
         return bbox_json_results, segm_json_results
 
     def results2json(self, results, outfile_prefix):
@@ -403,16 +408,6 @@ class CocoDataset(CustomDataset):
         Returns:
             dict[str, float]: COCO style evaluation metric.
         """
-        len_re = len(results)
-        ii = 0
-        while ii < len_re:
-            del(results[ii][0][158])
-            del(results[ii][0][155])
-            del(results[ii][0][154])
-            del(results[ii][0][136])
-            del(results[ii][0][134])
-            ii = ii + 1
-
 
         metrics = metric if isinstance(metric, list) else [metric]
         allowed_metrics = ['bbox', 'segm', 'proposal', 'proposal_fast']
