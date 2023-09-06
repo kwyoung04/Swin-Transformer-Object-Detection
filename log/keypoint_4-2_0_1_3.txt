@@ -1,0 +1,2 @@
+start time: 1692682266.088044
+run command: python tools/test.py configs/swin/nia_zeron.py work_dirs/nia_zeron/epoch_10.pth --eval segm

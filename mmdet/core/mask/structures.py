@@ -218,6 +218,7 @@ class BitmapMasks(BaseInstanceMasks):
         self.height = height
         self.width = width
         if len(masks) == 0:
+            print(self.height, self.width)
             self.masks = np.empty((0, self.height, self.width), dtype=np.uint8)
         else:
             assert isinstance(masks, (list, np.ndarray))
@@ -297,6 +298,7 @@ class BitmapMasks(BaseInstanceMasks):
 
     def pad(self, out_shape, pad_val=0):
         """See :func:`BaseInstanceMasks.pad`."""
+        #print("makes: ", self.masks.shape)
         if len(self.masks) == 0:
             padded_masks = np.empty((0, *out_shape), dtype=np.uint8)
         else:

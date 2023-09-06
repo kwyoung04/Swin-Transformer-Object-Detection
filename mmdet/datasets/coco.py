@@ -19,21 +19,8 @@ from .custom import CustomDataset
 
 @DATASETS.register_module()
 class CocoDataset(CustomDataset):
-
-    CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
-               'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
-               'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
-               'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe',
-               'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
-               'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat',
-               'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
-               'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
-               'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot',
-               'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
-               'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop',
-               'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',
-               'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
-               'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush')
+    
+    CLASSES = ('muffler', 'hat', 'wall', 'pan', 'person', 'bowl', 'table', 'floor', 'window', 'suitcase', 'ceiling', 'building', 'chestnut', 'whisk', 'book', 'cell phone', 'umbrella', 'skating shoes', 'car', 'bed', 'bench', 'violin', 'doll', 'pear', 'piano', 'flute', 'mug', 'gimbap', 'scissors', 'cutlery', 'castanets', 'tambourine', 'basketball hoop', 'ball', 'backpack', 'fan', 'road', 'rice spatula', 'vegetable peeler', 'recorder', 'xylophone', 'badminton racket', 'pilates equipment', 'watch', 'orange', 'refrigerator', 'knives', 'washstand', 'mirror', 'golf club', 'hulahoop', 'lamp', 'hair brush', 'chopping boards', 'chili', 'clock', 'banana', 'mouse', 'potato', 'jujube', 'pimento', 'billiards cue', 'tteokbokki', 'plate', 'goalpost', 'ocarina', 'roof', 'bicycle', 'toilet bowl', 'corn', 'gonggibap', 'sign', 'treadmill', 'air conditioner', 'box grater', 'tongs', 'squash', 'cucumber', 'espresso machine', 'pot', 'radish', 'keyboard', 'tray', 'massage gun', 'carabiner', 'dumbbell', 'apple', 'couch', 'door', 'trash bin', 'table tennis racket', 'shuttlecock', 'cat', 'side dish', 'microwave', 'gas stove', 'sweet potato', 'hair drier', 'sphygmomanometer', 'cabbage', 'kimchi', 'onion', 'eggplant', 'rice cooker', 'perilla leaf', 'sushi', 'mandu', 'handbag', 'guitar', 'tie', 'laptop', 'ladle', 'tomato', 'silicone spatula', 'tv', 'blood glucose meter', 'thermometer', 'lettuce', 'grape', 'carrot', 'garlic', 'spring onion', 'peach', 'speaker', 'icecream', 'gripper', 'smartwatch', 'melon', 'toothbrush', 'sandwich', 'tteok', 'pizza', 'chicken', 'pumpkin', 'cake', 'bird', 'camera', 'white bread', 'purifier', 'hotdog', 'toaster', 'persimmon', 'drone', 'tennis racket', 'watermelon', 'dog', 'hamburger', 'donut', 'defibrillator', 'chair')
 
     def load_annotations(self, ann_file):
         """Load annotation from COCO style annotation file.

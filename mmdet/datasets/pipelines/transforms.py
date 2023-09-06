@@ -225,6 +225,7 @@ class Resize(object):
 
             scale_factor = np.array([w_scale, h_scale, w_scale, h_scale],
                                     dtype=np.float32)
+            #print("# _resize_img img.shape", img.shape)
             results['img_shape'] = img.shape
             # in case that there is no padding
             results['pad_shape'] = img.shape
@@ -511,6 +512,8 @@ class Pad(object):
     def _pad_masks(self, results):
         """Pad masks according to ``results['pad_shape']``."""
         pad_shape = results['pad_shape'][:2]
+        #print(results['filename'])
+        #print("pad_shape:", pad_shape)
         for key in results.get('mask_fields', []):
             results[key] = results[key].pad(pad_shape, pad_val=self.pad_val)
 

@@ -18,8 +18,8 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade pip
 
 # Install MMCV
-#RUN pip install mmcv-full==latest+torch1.6.0+cu101 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
-#RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
+#RUN pip install mmcv-full==latest+torch1.7.1+cu110 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
+RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu110torch1.7.1/index.html
 RUN pip install mmdet==2.23.0
 
 
