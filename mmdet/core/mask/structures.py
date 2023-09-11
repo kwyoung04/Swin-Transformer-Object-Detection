@@ -218,7 +218,6 @@ class BitmapMasks(BaseInstanceMasks):
         self.height = height
         self.width = width
         if len(masks) == 0:
-            print(self.height, self.width)
             self.masks = np.empty((0, self.height, self.width), dtype=np.uint8)
         else:
             assert isinstance(masks, (list, np.ndarray))

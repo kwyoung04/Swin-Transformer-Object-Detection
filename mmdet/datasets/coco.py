@@ -20,7 +20,7 @@ from .custom import CustomDataset
 @DATASETS.register_module()
 class CocoDataset(CustomDataset):
     
-    CLASSES = ('muffler', 'hat', 'wall', 'pan', 'person', 'bowl', 'table', 'floor', 'window', 'suitcase', 'ceiling', 'building', 'chestnut', 'whisk', 'book', 'cell phone', 'umbrella', 'skating shoes', 'car', 'bed', 'bench', 'violin', 'doll', 'pear', 'piano', 'flute', 'mug', 'gimbap', 'scissors', 'cutlery', 'castanets', 'tambourine', 'basketball hoop', 'ball', 'backpack', 'fan', 'road', 'rice spatula', 'vegetable peeler', 'recorder', 'xylophone', 'badminton racket', 'pilates equipment', 'watch', 'orange', 'refrigerator', 'knives', 'washstand', 'mirror', 'golf club', 'hulahoop', 'lamp', 'hair brush', 'chopping boards', 'chili', 'clock', 'banana', 'mouse', 'potato', 'jujube', 'pimento', 'billiards cue', 'tteokbokki', 'plate', 'goalpost', 'ocarina', 'roof', 'bicycle', 'toilet bowl', 'corn', 'gonggibap', 'sign', 'treadmill', 'air conditioner', 'box grater', 'tongs', 'squash', 'cucumber', 'espresso machine', 'pot', 'radish', 'keyboard', 'tray', 'massage gun', 'carabiner', 'dumbbell', 'apple', 'couch', 'door', 'trash bin', 'table tennis racket', 'shuttlecock', 'cat', 'side dish', 'microwave', 'gas stove', 'sweet potato', 'hair drier', 'sphygmomanometer', 'cabbage', 'kimchi', 'onion', 'eggplant', 'rice cooker', 'perilla leaf', 'sushi', 'mandu', 'handbag', 'guitar', 'tie', 'laptop', 'ladle', 'tomato', 'silicone spatula', 'tv', 'blood glucose meter', 'thermometer', 'lettuce', 'grape', 'carrot', 'garlic', 'spring onion', 'peach', 'speaker', 'icecream', 'gripper', 'smartwatch', 'melon', 'toothbrush', 'sandwich', 'tteok', 'pizza', 'chicken', 'pumpkin', 'cake', 'bird', 'camera', 'white bread', 'purifier', 'hotdog', 'toaster', 'persimmon', 'drone', 'tennis racket', 'watermelon', 'dog', 'hamburger', 'donut', 'defibrillator', 'chair')
+    CLASSES = ('muffler', 'hat', 'wall', 'pan', 'person', 'bowl', 'table', 'floor', 'window', 'suitcase', 'ceiling', 'building', 'chestnut', 'whisk', 'book', 'cell phone', 'umbrella', 'skating shoes', 'car', 'bed', 'motorcycle', 'road', 'bench', 'violin', 'doll', 'pear', 'piano', 'flute', 'mug', 'gimbap', 'scissors', 'cutlery', 'castanets', 'tambourine', 'basketball hoop', 'ball', 'backpack', 'fan', 'rice spatula', 'vegetable peeler', 'recorder', 'xylophone', 'badminton racket', 'pilates equipment', 'watch', 'orange', 'refrigerator', 'knives', 'washstand', 'mirror', 'golf club', 'hulahoop', 'lamp', 'hair brush', 'chopping boards', 'chili', 'clock', 'banana', 'mouse', 'potato', 'jujube', 'pimento', 'billiards cue', 'tteokbokki', 'plate', 'scooter', 'goalpost', 'ocarina', 'roof', 'bicycle', 'toilet bowl', 'corn', 'gonggibap', 'sign', 'truck', 'treadmill', 'air conditioner', 'box grater', 'tongs', 'squash', 'cucumber', 'espresso machine', 'pot', 'radish', 'keyboard', 'tray', 'massage gun', 'carabiner', 'dumbbell', 'apple', 'couch', 'door', 'trash bin', 'table tennis racket', 'shuttlecock', 'cat', 'side dish', 'microwave', 'gas stove', 'fire extinguisher', 'sweet potato', 'hair drier', 'sphygmomanometer', 'cabbage', 'kimchi', 'onion', 'egg plant', 'rice cooker', 'perilla leaf', 'sushi', 'mandu', 'handbag', 'guitar', 'bus', 'tie', 'laptop', 'ladle', 'tomato', 'silicon spatula', 'fire hydrant', 'tv', 'blood glucose meter', 'thermometer', 'lettuce', 'grape', 'carrot', 'garlic', 'spring onion', 'speaker', 'icecream', 'gripper', 'melon', 'toothbrush', 'sandwich', 'ttoke', 'pizza', 'chicken', 'pumpkin', 'cake', 'plum', 'bird', 'camera', 'peach', 'white bread', 'purifier', 'hotdog', 'toaster', 'persimmon', 'drone', 'tennis racket', 'watermelon', 'traffic light', 'dog', 'hamburger', 'donut', 'defibrillator', 'chair')
 
     def load_annotations(self, ann_file):
         """Load annotation from COCO style annotation file.
@@ -390,16 +390,6 @@ class CocoDataset(CustomDataset):
         Returns:
             dict[str, float]: COCO style evaluation metric.
         """
-        len_re = len(results)
-        ii = 0
-        while ii < len_re:
-            del(results[ii][0][158])
-            del(results[ii][0][155])
-            del(results[ii][0][154])
-            del(results[ii][0][136])
-            del(results[ii][0][134])
-            ii = ii + 1
-
 
         metrics = metric if isinstance(metric, list) else [metric]
         allowed_metrics = ['bbox', 'segm', 'proposal', 'proposal_fast']
