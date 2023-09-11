@@ -225,15 +225,15 @@ class COCOeval:
         iscrowd = [int(o['iscrowd']) for o in gt]
         ious = maskUtils.iou(d, g, iscrowd)
         
-        #if len(gt) == 0:
-        #    nia_add_txt(int(imgId),d[0]['counts'],0)
-        #    return ious
-        #if len(dt) == 0:
-        #    nia_add_txt(int(imgId),0,g[0]['counts'])
-        #    return ious
+        if len(gt) == 0:
+            nia_add_txt(int(imgId),d[0]['counts'],0)
+            return ious
+        if len(dt) == 0:
+            nia_add_txt(int(imgId),0,g[0]['counts'])
+            return ious
 
         
-        #nia_add_txt(int(imgId),d[0]['counts'],g[0]['counts'])
+        nia_add_txt(int(imgId),d[0]['counts'],g[0]['counts'])
         return ious
 
     def computeOks(self, imgId, catId):
