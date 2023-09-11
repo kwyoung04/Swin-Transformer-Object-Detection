@@ -1,4 +1,5 @@
-swint_to_cvat
+*.scv
+*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
