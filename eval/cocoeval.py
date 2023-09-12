@@ -225,15 +225,14 @@ class COCOeval:
         iscrowd = [int(o['iscrowd']) for o in gt]
         ious = maskUtils.iou(d, g, iscrowd)
         
-        if len(gt) == 0:
-            nia_add_txt(int(imgId),d[0]['counts'],0)
-            return ious
-        if len(dt) == 0:
-            nia_add_txt(int(imgId),0,g[0]['counts'])
-            return ious
-
-        
-        nia_add_txt(int(imgId),d[0]['counts'],g[0]['counts'])
+        #if len(gt) == 0:
+        #    nia_add_txt(int(imgId),d[0]['counts'],0)
+        #    return ious
+        #if len(dt) == 0:
+        #    nia_add_txt(int(imgId),0,g[0]['counts'])
+        #    return ious
+        #
+        #nia_add_txt(int(imgId),d[0]['counts'],g[0]['counts'])
         return ious
 
     def computeOks(self, imgId, catId):
@@ -537,17 +536,17 @@ class COCOeval:
             
             if titleStr == "Average Precision" and iouStr == '0.50:0.95' and areaRng == 'all':
                 endTime = get_now_timestamp()
-                f = open("log/keypoint_4-2_0_1_3.txt", 'a')
+                #f = open("log/keypoint_4-2_0_1_3.txt", 'a')
                 
                 f_data = "end time: " + str(endTime) + "\n"
-                f.write(f_data)
+                #f.write(f_data)
                 
-                f.write("IoU-based TP, FP, TN, FN\n")
+                #f.write("IoU-based TP, FP, TN, FN\n")
                 
                 f_data = "Average Precision(AP) @[IoU = 0.50:0.95]: " + str(mean_s) + "\n"
-                f.write(f_data)
+                #f.write(f_data)
                     
-                f.close()
+                #f.close()
             
             
             
