@@ -233,11 +233,11 @@ def main():
 
 if __name__ == '__main__':
     startTime = get_now_timestamp()
-    f = open("log/keypoint_4-2_0_1_3.txt", 'w')
+    f = open("log/segmentation_4-2.txt", 'w')
     
     f_data = "start time: " + str(startTime) + "\n"
     f.write(f_data)
-    f.write("run command: python tools/test.py configs/swin/nia_zeron.py work_dirs/nia_zeron/epoch_10.pth --eval segm\n")
+    f.write("run command: python tools/test.py configs/swin/nia_zeron.py work_dirs/nia_zeron/nia_we.pth --eval segm\n")
     
     f.close()
     

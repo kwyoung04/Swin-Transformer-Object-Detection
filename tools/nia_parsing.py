@@ -40,7 +40,7 @@ def json_ummary(coco_data):
 
     print("# Calculate class proportions")
     total_images = len(coco_data['images'])
-    class_ratios = {class_name: count / total_images for class_name, count in class_counts.items()}
+    class_ratios = {class_name: count for class_name, count in class_counts.items()}
 
     print("# Save class ratio ratio to CSV file")
     with open('coco_class_ratios.csv', 'w') as csv_file:
@@ -86,13 +86,8 @@ def calculate_segmentation_area(segmentation):
     
     return area
     
-dir_list = ['annotation', 'sample', 'cnt']
+dir_list = ['annotation']
     
-#abs_path = "/home/ubuntu/data/train/fix_test/"
-#img_dir_path = "/home/ubuntu/data/train/fix_test/image/"
-#json_files = find_json_files_in_folder(abs_path)
-#coco_file_path = "fixed_"
-
 coco_data = {
 "images": [],
 "annotations": [],
@@ -113,7 +108,7 @@ for dir in dir_list:
     abs_path = "/home/ubuntu/data/train/fix_test/" + dir + "/"
     img_dir_path = "/home/ubuntu/data/train/fix_test/image/"
     json_files = find_json_files_in_folder(abs_path)
-    coco_file_path = "fixed_" + dir + ".json"
+    coco_file_path = "nia_" + dir + ".json"
     
     
     for json_file in tqdm(json_files, desc="Processing", unit="json_file"):

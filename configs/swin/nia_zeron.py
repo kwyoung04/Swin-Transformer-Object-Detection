@@ -1,5 +1,5 @@
-TRAIN_FILE = "/home/ubuntu/src/swint/tools/fixed_annotation.json"
-VAL_FILE   = "/home/ubuntu/src/swint/tools/fixed_sample.json"
+TRAIN_FILE = "/home/ubuntu/src/swint/tools/fixed_train.json"
+VAL_FILE   = "/home/ubuntu/src/swint/tools/fixed_annotation.json"
 CLASS_LIST = ['muffler', 'hat', 'wall', 'pan', 'person', 'bowl', 'table', 'floor', 'window', 'suitcase', 'ceiling', 'building', 'chestnut', 'whisk', 'book', 'cell phone', 'umbrella', 'skating shoes', 'car', 'bed', 'motorcycle', 'road', 'bench', 'violin', 'doll', 'pear', 'piano', 'flute', 'mug', 'gimbap', 'scissors', 'cutlery', 'castanets', 'tambourine', 'basketball hoop', 'ball', 'backpack', 'fan', 'rice spatula', 'vegetable peeler', 'recorder', 'xylophone', 'badminton racket', 'pilates equipment', 'watch', 'orange', 'refrigerator', 'knives', 'washstand', 'mirror', 'golf club', 'hulahoop', 'lamp', 'hair brush', 'chopping boards', 'chili', 'clock', 'banana', 'mouse', 'potato', 'jujube', 'pimento', 'billiards cue', 'tteokbokki', 'plate', 'scooter', 'goalpost', 'ocarina', 'roof', 'bicycle', 'toilet bowl', 'corn', 'gonggibap', 'sign', 'truck', 'treadmill', 'air conditioner', 'box grater', 'tongs', 'squash', 'cucumber', 'espresso machine', 'pot', 'radish', 'keyboard', 'tray', 'massage gun', 'carabiner', 'dumbbell', 'apple', 'couch', 'door', 'trash bin', 'table tennis racket', 'shuttlecock', 'cat', 'side dish', 'microwave', 'gas stove', 'fire extinguisher', 'sweet potato', 'hair drier', 'sphygmomanometer', 'cabbage', 'kimchi', 'onion', 'egg plant', 'rice cooker', 'perilla leaf', 'sushi', 'mandu', 'handbag', 'guitar', 'bus', 'tie', 'laptop', 'ladle', 'tomato', 'silicon spatula', 'fire hydrant', 'tv', 'blood glucose meter', 'thermometer', 'lettuce', 'grape', 'carrot', 'garlic', 'spring onion', 'speaker', 'icecream', 'gripper', 'melon', 'toothbrush', 'sandwich', 'ttoke', 'pizza', 'chicken', 'pumpkin', 'cake', 'plum', 'bird', 'camera', 'peach', 'white bread', 'purifier', 'hotdog', 'toaster', 'persimmon', 'drone', 'tennis racket', 'watermelon', 'traffic light', 'dog', 'hamburger', 'donut', 'defibrillator', 'chair']
 model = dict(
     type='CascadeRCNN',
@@ -13,7 +13,7 @@ model = dict(
         mlp_ratio=4.0,
         qkv_bias=True,
         qk_scale=None,
-        drop_rate=0.0,
+        drop_rate=0.5,
         attn_drop_rate=0.0,
         drop_path_rate=0.3,
         ape=False,
@@ -296,7 +296,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=8,
+    samples_per_gpu=7,
     workers_per_gpu=2,
     train=dict(
         type='CocoDataset',
